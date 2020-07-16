@@ -1,0 +1,57 @@
+DATABASE TABLES:
+
+----------------------------------------------------------------
+-- CUSTOMER MASTER TABLE
+----------------------------------------------------------------
+
+CREATE TABLE `customers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_first_name` varchar(45) NOT NULL,
+  `customer_user_name` varchar(45) NOT NULL,
+  `customer_last_name` varchar(45) NOT NULL,
+  `customer_email` varchar(45) NOT NULL,
+  `customer_password` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) COMMENT-'This table is to store customer information';
+
+
+
+
+----------------------------------------------------------------
+-- CUSTOMER TRANSACTIONS TABLE
+----------------------------------------------------------------
+
+
+CREATE TABLE `customer_transactions` (
+  `customer_transaction_id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `transaction_date` datetime NOT NULL,
+  `transaction_type` varchar(45) NOT NULL,
+  `transaction_category` varchar(45) NOT NULL,
+  PRIMARY KEY (`customer_transaction_id`),
+  KEY `customer_id_table_customer_transaction_idx` (`customer_id`),
+  CONSTRAINT `customer_id_table_customer_transaction` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
+) COMMENT-'This table stores the transactions on a daily basis ( if income is reported then it is additional  additional income )';
+
+
+
+
+
+----------------------------------------------------------------
+-- CUSTOMER DETAILS TABLE - For storing all the initial details 
+-- provided by the  customer at setup we can add the expenses as
+-- indivial lines but the table structure will differ.
+----------------------------------------------------------------
+
+
+CREATE TABLE `customer_details` (
+  `customer_details_id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `label` varchar(45) NOT NULL,
+  `amount` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`customer_details_id`),
+  KEY `customer_id_idx` (`customer_id`),
+  CONSTRAINT `customer_id_table_customer_details` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
+) COMMENT-'This table holds the expenses, income, debt, giving,savings';
