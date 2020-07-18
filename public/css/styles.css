@@ -579,3 +579,24 @@ body {
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
+
+.panel-group {
+    background-color: #562214;
+}
+
+.panel {
+    background-color: #999;
+}
+
+div.budget-card {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+main.mainclass {
+    background-color: #4ca8de21;
+}
+
+.budget-card-title {
+    background-color: #d3853b;
+}
