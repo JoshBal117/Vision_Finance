@@ -1,0 +1,38 @@
+Things to discuss:
+
+Install extension Prettier - code formatter 5.1.3 
+Install ESLINT6 ( or is it 5 - check with Jim ) (installing prettier probably also installs eslint?)
+Enable formatting on save in vs code and make prettier the default 
+
+coding standards:
+https://www.w3schools.com/js/js_conventions.asp
+https://www.w3schools.com/js/js_best_practices.asp
+no console.logs in the master branch version
+make a checklist to verify for review.
+
+
+Comments in code:
+Create a snippet for these things:
+C:\Users\pc\AppData\Roaming\Code\User\snippets\filecomment.code-snippets
+
+All files contain comments similar to this in the beginning:
+// ==============================================================================
+// Name : server.js
+// Author : Binary Beasts
+// Date : 05/12/2020
+// Purpose: Starting point for the node-express application
+// DEPENDENCIES
+// Series of npm packages that we will use to give our server useful functionality
+// Modifications:
+// DATE     AUTHOR      REASON
+// ==============================================================================
+
+All functions have comments:
+
+// ==============================================================================
+// function : <name of the function>
+// purpose : <purpose>
+// Input : <input arguments>
+// Output : <output >
+// ==============================================================================
+
