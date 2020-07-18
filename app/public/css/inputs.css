@@ -1,0 +1,48 @@
+ form {
+    background-color: grey;
+    margin: auto;
+    margin-top: 80px;    
+    border: 2px solid blue;
+    width:800px;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+      
+}
+
+topping {      
+      
+      font-weight: bolder;
+      font-size: xx-large;
+      color: blue;
+}
+  
+label {
+      font-size: large;
+      float: left;
+      font-weight: bolder;
+}
+
+.btn-primary {
+      width: 250px;
+      color: blue;
+}
+
+#back{
+      color: blue;
+      padding-bottom: 30px;
+}
+
+/* .form-group {
+    padding: 10px;
+} */
+
+#add-label {
+    font-size: large;
+    float: left;
+    font-weight: bolder;
+    color: blue;
+}
+
+
