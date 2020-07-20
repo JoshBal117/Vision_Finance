@@ -2,99 +2,193 @@
 //var d3 = require("d3");
 //import { interpolateSpectral } from "d3-interpolate";
 //var d3interpolate = require("d3-interpolate");
-
-var svg = d3.select(document.body).append("svg"),
-    width = svg.attr("width"),
-    height = svg.attr("height"),
-    radius = Math.min(width, height) / 2;
-var arc = d3
-    .arc()
-    .innerRadius(radius * 0.67)
-    .outerRadius(radius - 1);
-
-var pie = d3
-    .pie()
-    .padAngle(0.005)
-    .sort(null)
-    .value((d) => d.value);
-
-var data = [{
-        expense: "Food",
-        value: "400",
-    },
-
-    {
-        expense: "Transportation",
-        value: "350",
-    },
-
-    {
-        expense: "House",
-        value: "1200",
-    },
-
-    {
-        expense: "Entertainment",
-        value: "100",
-    },
-
-    {
-        expense: "Personal",
-        value: "120",
-    },
-
-    {
-        expense: "Child care",
-        value: "360",
-    },
-
-    {
-        expense: "Misc",
-        value: "80",
-    },
+var masterColorChart = [
+    "rgba(213, 0, 0, 0.8)",
+    "rgba(0, 200, 83, 0.9)",
+    "rgba(81, 45, 168, 0.9)",
+    "rgba(255, 111, 0, 0.8)",
+    "rgba(23, 212, 241, 0.9)",
+    "rgba(238, 255, 65, 0.8)",
+    "rgba(41, 98, 255, 0.9)",
 ];
 
-var arcs = pie(data);
-
-var color = d3
-    .scaleOrdinal()
-    .domain(data.map((d) => d.name))
-    .range(
-        d3
-        .quantize((t) => d3.interpolateSpectral(t * 0.8 + 0.1), data.length)
-        .reverse()
+function getMonthlyExpense() {
+    //const selectedUser = $("#userId");
+    //for now it is fixed
+    const selectedUser = "1";
+    const thismonth = new Date().getMonth();
+    const thisyear = new Date().getFullYear();
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.get(
+        "/api/monthlyexpenses/" + selectedUser + "/" + thismonth + "/" + thisyear,
+        function(monthlyExpenseData) {
+            var monthlyExpenseLabels = [];
+            var monthlyExpenseAmt = [];
+            for (let index = 0; index < monthlyExpenseData.length; index++) {
+                console.log(monthlyExpenseData[index]);
+                monthlyExpenseAmt.push(monthlyExpenseData[index].t_amt);
+                monthlyExpenseLabels.push(monthlyExpenseData[index].t_date);
+            }
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: monthlyExpenseLabels,
+                    datasets: [{
+                        data: monthlyExpenseAmt,
+                        lineTension: 0,
+                        backgroundColor: "transparent",
+                        borderColor: "#007bff",
+                        borderWidth: 4,
+                        pointBackgroundColor: "#007bff",
+                    }, ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false,
+                            },
+                        }, ],
+                    },
+                    legend: {
+                        display: false,
+                    },
+                },
+            });
+        }
     );
-svg
-    .selectAll("path")
-    .data(arcs)
-    .join("path")
-    .attr("fill", (d) => color(d.data.expense))
-    .attr("d", arc)
-    .append("title")
-    .text((d) => d.data.expense + " : " + d.data.value.toLocaleString());
+} //getMonthlyExpense
 
-svg
-    .append("g")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 12)
-    .attr("text-anchor", "middle")
-    .selectAll("text")
-    .data(arcs)
-    .join("text")
-    .attr("transform", (d) => "translate(" + arc.centroid(d) + "})")
-    .call((text) =>
-        text
-        .append("tspan")
-        .attr("y", "-0.4em")
-        .attr("font-weight", "bold")
-        .text((d) => d.data.expense)
-    )
-    .call((text) =>
-        text
-        .filter((d) => d.endAngle - d.startAngle > 0.25)
-        .append("tspan")
-        .attr("x", 0)
-        .attr("y", "0.7em")
-        .attr("fill-opacity", 0.7)
-        .text((d) => d.data.value.toLocaleString())
+function displayMonthHeader() {
+    var monthElement = $("#headermonth");
+    var monthName = getCurrentMonthName(parseInt(budgetData[0].budgeted_month));
+    monthElement.append($("<h1>").text(monthName));
+} //displayMonthlyHeader
+
+function getExpenseBreakdown() {
+    //const selectedUser = $("#userId");
+    //for now it is fixed
+    const selectedUser = "1";
+    const thismonth = new Date().getMonth();
+    const thisyear = new Date().getFullYear();
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.get(
+        "/api/monthlyexpensesbreakdown/" +
+        selectedUser +
+        "/" +
+        thismonth +
+        "/" +
+        thisyear,
+        function(monthlyExpenseData) {
+            var monthlyExpenseLabels = [];
+            var monthlyExpenseAmt = [];
+            var colorchart = [];
+            for (let index = 0; index < monthlyExpenseData.length; index++) {
+                console.log(monthlyExpenseData[index]);
+                monthlyExpenseAmt.push(monthlyExpenseData[index].t_amt);
+                monthlyExpenseLabels.push(
+                    monthlyExpenseData[index].transaction_category
+                );
+            }
+            debugger;
+            if (monthlyExpenseData.length <= masterColorChart.length) {
+                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            }
+
+            var spendingTotalsChartCtx = document.getElementById(
+                "mySpendingTotalsChart"
+            );
+
+            var pieData = {
+                labels: monthlyExpenseLabels,
+                datasets: [{
+                    data: monthlyExpenseAmt,
+                    label: "Expenses",
+                    backgroundColor: colorchart,
+                }, ],
+            };
+            var myPieChart = new Chart(spendingTotalsChartCtx, {
+                type: "doughnut",
+                data: pieData,
+                options: {},
+            });
+        }
     );
+} //getExpenseBreakdown
+
+function getMoneyTracker() {
+    //const selectedUser = $("#userId");
+    //for now it is fixed
+    const selectedUser = "1";
+    const thismonth = new Date().getMonth();
+    const thisyear = new Date().getFullYear();
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.get(
+        "/api/currentbudgettracker/" +
+        selectedUser +
+        "/" +
+        thismonth +
+        "/" +
+        thisyear,
+        function(monthlyExpenseData) {
+            var monthlyExpenseLabels = [];
+            var monthlyBudgetAmt = [];
+            var monthlyAcutalAmt = [];
+            var colorchart = [];
+            for (let index = 0; index < monthlyExpenseData.length; index++) {
+                if (monthlyExpenseData[index].category === "Income") {
+                    //should we do a diff graph for income
+                    //skip for now
+                } else {
+                    monthlyAcutalAmt.push(monthlyExpenseData[index].actual_amount);
+                    monthlyBudgetAmt.push(monthlyExpenseData[index].budgeted_amount);
+                    monthlyExpenseLabels.push(monthlyExpenseData[index].category);
+                }
+            }
+            debugger;
+            if (monthlyExpenseData.length <= masterColorChart.length) {
+                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            }
+
+            var budgetRadarChartCtx = document.getElementById("budgetRadarChart");
+
+            var radarChart = new Chart(budgetRadarChart, {
+                type: "radar",
+                data: {
+                    labels: monthlyExpenseLabels,
+                    datasets: [{
+                            label: "Budget",
+                            fill: true,
+                            backgroundColor: "rgba(27, 199, 24,0.2)",
+                            borderColor: "rgba(27, 199, 24,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(27, 199, 24,1)",
+                            data: monthlyBudgetAmt,
+                        },
+                        {
+                            label: "Actuals",
+                            fill: true,
+                            backgroundColor: "rgba(255,99,132,0.2)",
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            data: monthlyAcutalAmt,
+                        },
+                    ],
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Distribution in % of world population",
+                    },
+                },
+            });
+        }
+    );
+} //getMoneyTracker
+
+getMoneyTracker();
+getMonthlyExpense();
+getExpenseBreakdown();

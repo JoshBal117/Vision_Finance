@@ -27,6 +27,10 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
+    app.get("/", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
+
     app.get("/create", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/Input-htmls/create.html"));
     });
@@ -34,21 +38,17 @@ module.exports = function(app) {
     app.get("/income", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/Input-htmls/income.html"));
     });
-    
+
     app.get("/expense", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/Input-htmls/housing.html"));
     });
-    
-    // app.get("/income", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../public/Input-htmls/income.html"));
-    // });
 
     app.get("/dashboard", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/dashboard.html"));
     });
 
     // If no matching route is found default to home
-    app.get("*", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
+    // app.get("*", function(req, res) {
+    //     res.sendFile(path.join(__dirname, "../public/index.html"));
+    // });
 };

@@ -600,3 +600,23 @@ main.mainclass {
 .budget-card-title {
     background-color: #d3853b;
 }
+
+.dashboard-card-title {
+    color: #1f2426;
+    font-weight: 700;
+    line-height: 1.8rem;
+    font-family: canada-type-gibson, proxima-nova, sans-serif;
+    font-size: 1.8rem;
+    display: block;
+    margin: auto;
+    padding: 1.2rem;
+    height: 4.8rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.dashboard-title {
+    background: #2250eb;
+    height: 7.15rem;
+    font-size-adjust: unset;
+}
