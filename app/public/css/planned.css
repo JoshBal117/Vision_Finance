@@ -1,0 +1,23 @@
+.buts{
+    text-align: justify;
+    border-radius: 1em;
+    text-align: center;
+    
+}
+.card-title {
+    text-align: center;
+    font-size: x-large;
+}
+h1 {
+    color: white;
+}
+a {
+    color: #f4623a;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: #d6370c;
+    text-decoration: underline;
+}
