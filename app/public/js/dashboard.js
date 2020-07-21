@@ -25,7 +25,6 @@ function getMonthlyExpense() {
             var monthlyExpenseLabels = [];
             var monthlyExpenseAmt = [];
             for (let index = 0; index < monthlyExpenseData.length; index++) {
-                console.log(monthlyExpenseData[index]);
                 monthlyExpenseAmt.push(monthlyExpenseData[index].t_amt);
                 monthlyExpenseLabels.push(monthlyExpenseData[index].t_date);
             }
@@ -85,13 +84,12 @@ function getExpenseBreakdown() {
             var monthlyExpenseAmt = [];
             var colorchart = [];
             for (let index = 0; index < monthlyExpenseData.length; index++) {
-                console.log(monthlyExpenseData[index]);
                 monthlyExpenseAmt.push(monthlyExpenseData[index].t_amt);
                 monthlyExpenseLabels.push(
                     monthlyExpenseData[index].transaction_category
                 );
             }
-            debugger;
+
             if (monthlyExpenseData.length <= masterColorChart.length) {
                 colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
             }
@@ -146,7 +144,6 @@ function getMoneyTracker() {
                     monthlyExpenseLabels.push(monthlyExpenseData[index].category);
                 }
             }
-            debugger;
             if (monthlyExpenseData.length <= masterColorChart.length) {
                 colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
             }

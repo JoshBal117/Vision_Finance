@@ -5,14 +5,14 @@ const db = require('../models');
 const { builtinModules } = require('module');
 
 module.exports = app => {
-    app.get('api/goals/', funcction (req, res) {
+    app.get('api/goals/', funcction(req, res) {
         db.goals.findAll9({})
-           .then(function (dbgoals) {
-               res.json(dbgoals);
-           });
+            .then(function(dbgoals) {
+                res.json(dbgoals);
+            });
     });
 
-    app.post('/api/goals', function (req, res) {
+    app.post('/api/goals', function(req, res) {
         console.log(req.body);
         db.goals.create
     })

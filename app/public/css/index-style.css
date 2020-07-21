@@ -18,16 +18,11 @@
     font-size: 70px;
     color: blue;
     margin-top: -100px;
-    
+}
 
-    }
-
-    .about-text {
-        margin-top: 200px;
-    }
-
-
-
+.about-text {
+    margin-top: 100px;
+}
 
 a:hover {
     color: #d6370c;
@@ -375,7 +370,6 @@ hr.light {
 
 .page-section {
     padding: 8rem 0;
-    
 }
 
 .services {
@@ -426,7 +420,7 @@ hr.light {
     }
     #mainNav .navbar-nav .nav-item .nav-link {
         color: black;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
         margin-right: 20px;
     }
     #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -562,14 +556,12 @@ body {
 
 #mainNav {
     background-color: white;
-    
 }
-
-
 
 .navbar-nav {
-    color:black;
+    color: black;
 }
+
 .navbar-brand {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -612,12 +604,10 @@ body {
 #about {
     height: 800px;
     padding-top: 60px;
-    
 }
 
 .container {
     height: 365px;
-    
 }
 
 footer {
@@ -625,5 +615,5 @@ footer {
     padding: 25px;
     font-size: xx-large;
     background-color: coral;
-    height: 100px
+    height: 100px;
 }
