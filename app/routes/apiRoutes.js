@@ -1,6 +1,9 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
+// ==============================================================================
+// Name : apiRoutes.js
+// Author : Binary Beasts
+// Date : 07/13/2020
+// Purpose: this file offers a set of routes for displaying and saving data to the db
+// ==============================================================================
 
 // Dependencies
 // =============================================================
@@ -14,7 +17,6 @@ module.exports = function(app) {
         req,
         res
     ) {
-        console.log("inside apiroutes:userbudget");
         var userInput = req.params.userid;
 
         var thismonth = req.params.inputmonth;
@@ -25,7 +27,6 @@ module.exports = function(app) {
         if (!thisyear) {
             thisyear = new Date().getFullYear();
         }
-        console.log(thismonth);
         var query = connection.query(
             "SELECT c.customer_id, c.category, c.label, c.amount, " +
             "IFNULL ( (select sum(transaction_amount) " +
@@ -50,7 +51,6 @@ module.exports = function(app) {
         req,
         res
     ) {
-        console.log("inside apiroutes:currentbudgettracker");
         var userInput = req.params.userid;
 
         var thismonth = req.params.inputmonth;
@@ -61,7 +61,6 @@ module.exports = function(app) {
         if (!thisyear) {
             thisyear = new Date().getFullYear();
         }
-        console.log(thismonth);
         var query = connection.query(
             "SELECT c.customer_id, c.category, sum(c.amount) as budgeted_amount, " +
             "IFNULL ( (select sum(transaction_amount) " +
@@ -81,10 +80,8 @@ module.exports = function(app) {
 
     //get monthly expense for the current year
     app.get("/api/currentyearexpense/:userid", function(req, res) {
-        console.log("inside apiroutes:currentyearexpense");
         let userInput = req.params.userid;
         let thismonth = new Date().getMonth();
-        console.log(thismonth);
         var query = connection.query(
             "SELECT * FROM customer_transactions WHERE customer_id = ? and budgeted_month = ? ORDER BY CATEGORY", [userInput, thismonth],
             function(err, result) {
@@ -98,11 +95,9 @@ module.exports = function(app) {
 
     //get monthly expense for the current year
     app.get("/api/monthlyexpenses/:userid/:month/:year", function(req, res) {
-        console.log("inside apiroutes:currentyearexpense");
         let userInput = req.params.userid;
         let inputmonth = req.params.month;
         let inputyear = req.params.year;
-        console.log(inputyear);
         var query = connection.query(
             "SELECT DATE_FORMAT(transaction_date, '%m-%d-%y') as t_date, sum(transaction_amount) as t_amt FROM customer_transactions " +
             "WHERE customer_id = ? and budgeted_month = ? and budgeted_year = ? and  " +
@@ -119,11 +114,9 @@ module.exports = function(app) {
         req,
         res
     ) {
-        console.log("inside apiroutes:currentyearexpense");
         let userInput = req.params.userid;
         let inputmonth = req.params.month;
         let inputyear = req.params.year;
-        console.log(inputyear);
         var query = connection.query(
             "SELECT transaction_category, sum(transaction_amount) as t_amt FROM customer_transactions " +
             "WHERE customer_id = ? and budgeted_month = ? and budgeted_year = ? and  " +

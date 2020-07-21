@@ -28,7 +28,6 @@ function getBudget() {
         function(budgetData) {
             //first get the month
             if (budgetData.length > 0) {
-                console.log(budgetData);
                 var monthElement = $("#headermonth");
                 var monthName = getCurrentMonthName(
                     parseInt(budgetData[0].budgeted_month)
