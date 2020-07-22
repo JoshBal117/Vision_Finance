@@ -31,6 +31,75 @@
       </p>
     <![endif]-->
 
+
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            <label for="inputEmail">Email</label>
+      <input type="text" class="form-control" id="inputEmail" placeholder="Jsmith@gmail.com">
+          </div>
+          <div class="modal-body">
+            <label for="inputEmail">Password</label>
+      <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
+          </div>
+          
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!------------------------------------------------------------------------>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Create Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <label for="inputEmail">Email</label>
+  <input type="text" class="form-control" id="inputEmail" placeholder="Jsmith@gmail.com">
+      </div>
+      <div class="modal-body">
+        <label for="inputEmail">Password</label>
+  <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
+      </div>
+      <div class="modal-body">
+        <label for="inputEmail">Re-type Password</label>
+  <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
+      </div>
+      
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Create Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      
+    
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 
 
@@ -50,6 +119,7 @@
           <span class="navbar-toggler-icon"></span>
         </button> -->
 
+       
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0 back">
@@ -61,12 +131,13 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/dashboard">Login</a>
+              <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#myModal">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/create">Signup</a>
+                    <a class="nav-link js-scroll-trigger"data-toggle="modal" data-target="#myModal2">Signup</a>
                 </li>
             </ul>
+
         </div>
         </div>
     </nav>
