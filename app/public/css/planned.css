@@ -1,9 +1,14 @@
 .buts{
-    text-align: justify;
-    border-radius: 1em;
-    text-align: center;
+   text-align: center;
+  
     
 }
+
+.btn-primary {
+    width: 200px;
+}
+
+
 .card-title {
     text-align: center;
     font-size: x-large;
