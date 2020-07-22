@@ -15,9 +15,31 @@
  */
 
 
+
+.let-us {
+     color: blue;
+ }
+ .modal-name{
+    text-align: center;
+    font-size: xx-large;
+     
+ }
+
+ .btn {
+    color: white;   
+}
+
+.modal-foot {
+    text-align: center;
+    margin: 50px;
+}
+
+.btn-primary{
+    text-align: center;
+}
 .name {
     font-size: 70px;
-    color: blue;
+    color: black;
     margin-top: -100px;
 }
 
