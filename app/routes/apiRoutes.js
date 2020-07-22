@@ -40,7 +40,7 @@ module.exports = function(app) {
             "WHERE c.customer_id = ? and c.budgeted_month = ? and c.budgeted_year = ? ORDER BY  " +
             "c.cATEGORY", [userInput, thismonth, thisyear],
             function(err, result) {
-                if (err) throw err;
+                if (err) return res.send(err);
                 res.json(result);
             }
         );
@@ -72,7 +72,7 @@ module.exports = function(app) {
             "from customer_budget_details c " +
             "WHERE c.customer_id = ? and c.budgeted_month = ? and c.budgeted_year = ?  GROUP BY c.category", [userInput, thismonth, thisyear],
             function(err, result) {
-                if (err) throw err;
+                if (err) return res.send(err);
                 res.json(result);
             }
         );
@@ -85,7 +85,7 @@ module.exports = function(app) {
         var query = connection.query(
             "SELECT * FROM customer_transactions WHERE customer_id = ? and budgeted_month = ? ORDER BY CATEGORY", [userInput, thismonth],
             function(err, result) {
-                if (err) throw err;
+                if (err) return res.send(err);
                 res.json(result);
             }
         );
@@ -103,7 +103,7 @@ module.exports = function(app) {
             "WHERE customer_id = ? and budgeted_month = ? and budgeted_year = ? and  " +
             "transaction_category <>  'Income' group BY transaction_date order by transaction_date", [userInput, inputmonth, inputyear],
             function(err, result) {
-                if (err) throw err;
+                if (err) return res.send(err);
                 res.json(result);
             }
         );
@@ -122,7 +122,7 @@ module.exports = function(app) {
             "WHERE customer_id = ? and budgeted_month = ? and budgeted_year = ? and  " +
             "transaction_category <>  'Income' group BY transaction_category order by transaction_category", [userInput, inputmonth, inputyear],
             function(err, result) {
-                if (err) throw err;
+                if (err) return res.send(err);
                 res.json(result);
             }
         );
