@@ -106,7 +106,7 @@ function getExpenseBreakdown() {
                     backgroundColor: colorchart,
                 }, ],
             };
-            var myPieChart = new Chart(spendingTotalsChartCtx, {
+            var budgetPieChart = new Chart(spendingTotalsChartCtx, {
                 type: "doughnut",
                 data: pieData,
                 options: {},
@@ -123,7 +123,7 @@ function getMoneyTracker() {
     const thisyear = new Date().getFullYear();
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
     $.get(
-        "/api/currentbudgettracker/" +
+        "/api/currentbudgetbycategory/" +
         selectedUser +
         "/" +
         thismonth +
@@ -150,7 +150,7 @@ function getMoneyTracker() {
 
             var budgetRadarChartCtx = document.getElementById("budgetRadarChart");
 
-            var radarChart = new Chart(budgetRadarChart, {
+            var radarChart = new Chart(budgetRadarChartCtx, {
                 type: "radar",
                 data: {
                     labels: monthlyExpenseLabels,
@@ -178,7 +178,7 @@ function getMoneyTracker() {
                 options: {
                     title: {
                         display: true,
-                        text: "Distribution in % of world population",
+                        text: "Distribution of actuals and budget categories",
                     },
                 },
             });
@@ -186,6 +186,53 @@ function getMoneyTracker() {
     );
 } //getMoneyTracker
 
+function getBudgetedChart() {
+    const selectedUser = "1";
+    const thismonth = new Date().getMonth();
+    const thisyear = new Date().getFullYear();
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    //use the same api but ignore the actual values
+    $.get(
+        "/api/currentbudgetbycategory/" +
+        selectedUser +
+        "/" +
+        thismonth +
+        "/" +
+        thisyear,
+        function(monthlyExpenseData) {
+            var monthlyExpenseLabels = [];
+            var monthlyBudgetAmt = [];
+            var colorchart = [];
+            for (let index = 0; index < monthlyExpenseData.length; index++) {
+                if (monthlyExpenseData[index].category === "Income") {
+                    //should we do a diff graph for income
+                    //skip for now
+                } else {
+                    monthlyBudgetAmt.push(monthlyExpenseData[index].budgeted_amount);
+                    monthlyExpenseLabels.push(monthlyExpenseData[index].category);
+                }
+            }
+            if (monthlyExpenseData.length <= masterColorChart.length) {
+                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            }
+            var pieChartCtx = document.getElementById("budgetPieChart");
+            var pieData = {
+                labels: monthlyExpenseLabels,
+                datasets: [{
+                    data: monthlyBudgetAmt,
+                    label: "Categories",
+                    backgroundColor: colorchart,
+                }, ],
+            };
+            var budgetPieChart = new Chart(pieChartCtx, {
+                type: "polarArea",
+                data: pieData,
+            });
+        }
+    );
+} //getBudgetedChart()
+
 getMoneyTracker();
 getMonthlyExpense();
 getExpenseBreakdown();
+getBudgetedChart();

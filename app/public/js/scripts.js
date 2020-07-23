@@ -51,3 +51,59 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
+
+$(".register-button").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newUser = {
+        customerName: $("#registerName").val().trim(),
+        customerEmail: $("#registerEmail").val().trim(),
+        customerPassword: $("#registerPassword").val().trim(),
+        customerPassword2: $("#registerPassword").val().trim(),
+    };
+
+    //console.log(newUser);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
+
+    $.post("/api/register", newUser, function(data) {
+        // If a table is available... tell user they are booked.
+        console.log(data);
+        // Clear absolutely everything stored in localStorage using localStorage.clear()
+        localStorage.clear();
+
+        // Store the username into localStorage using "localStorage.setItem"
+        localStorage.setItem("registeredInUser", data);
+    });
+});
+
+$(".login-button").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var loginUser = {
+        customerEmail: $("#loginEmail").val().trim(),
+        customerPassword: $("#loginPassword").val().trim(),
+    };
+
+    console.log(loginUser);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
+
+    $.post("/api/login", loginUser, function(data) {
+        // If a table is available... tell user they are booked.
+        console.log(data);
+        // Clear absolutely everything stored in localStorage using localStorage.clear()
+        localStorage.clear();
+
+        // Store the username into localStorage using "localStorage.setItem"
+        localStorage.setItem("signedInUser", data);
+    });
+});
