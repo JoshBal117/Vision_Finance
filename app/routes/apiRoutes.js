@@ -217,7 +217,7 @@ module.exports = function(app) {
     });
 
     app.post("/api/createbudget", function(req, res) {
-        console.log(req);
+        console.log(req.body);
         var budget = req.body.budget;
 
         connection.query(
