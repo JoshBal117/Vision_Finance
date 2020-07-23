@@ -128,5 +128,137 @@ module.exports = function(app) {
         );
     });
 
+    // register
+    app.post("/api/register", function(req, res) {
+        const password = req.body.customerPassword;
+        console.log(`password ${password}`);
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log(`passwd hash ${hash}`);
 
+            const encryptedPassword = "test"; //await bcrypt.hash(password, saltRounds);
+            console.log("reqbody");
+            console.log(req.body);
+            var users = {
+                customer_name: req.body.customerName,
+                customer_email: req.body.customerEmail,
+                customer_password: hash,
+            };
+
+            connection.query("INSERT INTO customers SET ?", users, function(
+                error,
+                results,
+                fields
+            ) {
+                if (error) {
+                    // sample error for reference
+                    // code: 'ER_DATA_TOO_LONG',
+                    // errno: 1406,
+                    // sqlState: '22001',
+                    // sqlMessage: "Data too long for column 'customer_password' at row 1"
+                    res.send({
+                        code: 400,
+                        failed: "error ocurred",
+                    });
+                } else {
+                    res.send({
+                        code: 200,
+                        success: "user registered sucessfully",
+                    });
+                }
+            });
+        });
+    });
+
+    //login
+    app.post("/api/login", async function(req, res) {
+        console.log("inside login");
+        var email = req.body.customerEmail;
+        var password = req.body.customerPassword;
+        console.log("inside login " + email + password);
+
+        connection.query(
+            "SELECT * FROM customers WHERE customer_email = ?", [email],
+            function(error, results, fields) {
+                if (error) {
+                    console.log(error);
+                    res.send({
+                        code: 400,
+                        failed: "error while looking up userocurred",
+                    });
+                } else {
+                    console.log(JSON.stringify(results));
+                    //check returned values
+                    if (results.length > 0) {
+                        bcrypt.compare(
+                            password,
+                            results[0].customer_password,
+                            (compare_err, compare_res) => {
+                                if (compare_err) {
+                                    console.error(compare_err);
+                                    return;
+                                }
+                                console.log(compare_res); //true or false
+
+                                if (compare_res) {
+                                    res.send({
+                                        code: 200,
+                                        success: "login sucessfull",
+                                    });
+                                } else {
+                                    res.send({
+                                        code: 204,
+                                        success: "Email and password does not match",
+                                    });
+                                }
+                                //     const comparision = await bcrypt.compare(
+                                //     password,
+                                //     results[0].password
+                                // );
+                            }
+                        );
+                    } else {
+                        res.send({
+                            code: 206,
+                            success: "Email does not exits",
+                        });
+                    }
+                }
+            }
+        );
+    });
+
+    app.post("/api/createbudget/:userid/:month/:year", function(req, res) {
+        var budget = {
+            customer_name: req.body.customerName,
+            customer_email: req.body.customerEmail,
+            customer_password: hash,
+        };
+
+        connection.query(
+            "INSERT INTO customers_budget_details SET ?",
+            budget,
+            function(error, results, fields) {
+                if (error) {
+                    // sample error for reference
+                    // code: 'ER_DATA_TOO_LONG',
+                    // errno: 1406,
+                    // sqlState: '22001',
+                    // sqlMessage: "Data too long for column 'customer_password' at row 1"
+                    res.send({
+                        code: 400,
+                        failed: "error ocurred",
+                    });
+                } else {
+                    res.send({
+                        code: 200,
+                        success: "user registered sucessfully",
+                    });
+                }
+            }
+        );
+    });
 };
