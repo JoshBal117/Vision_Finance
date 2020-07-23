@@ -10,7 +10,15 @@ var connection;
 
 console.log(process.env.JAWSDB_URL);
 if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
+    //connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+    connection = mysql.createConnection({
+        port: 3306,
+        host: process.env.JAWSDB_HOST,
+        user: process.env.JAWSDB_USER,
+        password: process.env.JAWSDB_PASSWORD,
+        database: process.env.JAWSDB_DATABASE,
+    });
 } else {
     connection = mysql.createConnection({
         port: 3306,
