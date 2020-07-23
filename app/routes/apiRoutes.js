@@ -218,13 +218,13 @@ module.exports = function(app) {
 
     app.post("/api/createbudget", function(req, res) {
         console.log(req.body);
-        var budget = req.body.budget;
+        var budget = req.body.budgetdata;
 
         connection.query(
-            "INSERT INTO customers_budget_details SET ?",
-            budget,
+            "INSERT INTO customer_budget_details(customer_id,category,label,amount,budgeted_month,budgeted_year)VALUES ?", [budget],
             function(error, results, fields) {
                 if (error) {
+                    console.log(error);
                     // sample error for reference
                     // code: 'ER_DATA_TOO_LONG',
                     // errno: 1406,
