@@ -1,31 +1,28 @@
 {
-  "name": "visionfinance",
-  "version": "1.0.0",
-  "description": "Vision Finance",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoshBal117/Vision_Finance.git"
-  },
-  "keywords": [
-    "javascript"
-  ],
-  "author": "Binary Beasts",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JoshBal117/Vision_Finance/issues"
-  },
-  "homepage": "https://github.com/JoshBal117/Vision_Finance#readme",
-  "dependencies": {
-    "d3": "^5.16.0",
-    "d3-interpolate": "^1.4.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "node": "^14.5.0",
-    "path": "^0.12.7"
-  }
+    "name": "visionfinance",
+    "version": "1.0.0",
+    "description": "Vision Finance",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JoshBal117/Vision_Finance.git"
+    },
+    "keywords": [
+        "javascript"
+    ],
+    "author": "Binary Beasts",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/JoshBal117/Vision_Finance/issues"
+    },
+    "homepage": "https://github.com/JoshBal117/Vision_Finance#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mysql2": "^2.1.0",
+        "node": "^14.5.0",
+        "path": "^0.12.7"
+    }
 }
