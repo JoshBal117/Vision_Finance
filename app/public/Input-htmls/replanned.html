@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="css/planned.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/index">Vision Finance</a>
+
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/index">Sign out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/dashboard">
+                  Analyze your Spending <span class="sr-only">(current)</span>
+                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/planned">
+                  Planned Income/Expenses 
+                </a>
+                       
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/budget">
+     Monthly Budget
+    </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reports</a>
+            </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Saved reports</span>
+                        <a class="d-flex align-items-center text-muted" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Current month</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Last quarter</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="card-title">Planned Income</h2>
+                        <div class="card rounded budget-card" id="budget-income">
+                            <div class="card-body text-dark">
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Income Check 1</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+
+
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Income Check 2</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+
+
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Income Check 3</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Income Check 4</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="buts">
+                            <button class="btn btn-primary "><a type="create" class= "btn" href="/dashboard">Submit Budget</a> </button>
+                            <br>
+                            <br>
+                            <!-- <button type="back" class="btn" id= "back">Back</button> -->
+                            <!-- <a href="/index"><button type = "back" class="btn">Back</button></a> -->
+
+                            <a type="back" class="btn" href="/index">Back</a>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2 class="card-title">Planned Expenses</h2>
+                        <div class="card rounded budget-card" id="budget-income">
+                            <div class="card-body text-dark">
+
+                                <h4> Housing</h4>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Mortgage/Rent</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Cable/Internet</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Electricity</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Phone</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Subscriptions</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Water</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+
+                                <h4> Food</h4>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Groceries</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Restaurants</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+                                <h4> Transportation</h4>
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Car Payment</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label">Gas</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control" id="colFormLabelSm" placeholder="Planned">
+                                    </div>
+                                </div>
+
+                                <!-- Bootstrap core JavaScript
+        ================================================== -->
+                                <!-- Placed at the end of the document so the pages load faster -->
+
+                                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+                                <!-- Graphs -->
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+                                <script src="https://d3js.org/d3.v4.min.js"></script>
+                                <script src="js/dashboard.js"></script>
+                                <script src="js/piechart.js"></script>
+                                <script>
+                                    var ctx = document.getElementById("myChart");
+                                    var myChart = new Chart(ctx, {
+                                        type: "line",
+                                        data: {
+                                            labels: [
+                                                "Sunday",
+                                                "Monday",
+                                                "Tuesday",
+                                                "Wednesday",
+                                                "Thursday",
+                                                "Friday",
+                                                "Saturday",
+                                            ],
+                                            datasets: [{
+                                                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                                                lineTension: 0,
+                                                backgroundColor: "transparent",
+                                                borderColor: "#007bff",
+                                                borderWidth: 4,
+                                                pointBackgroundColor: "#007bff",
+                                            }, ],
+                                        },
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: false,
+                                                    },
+                                                }, ],
+                                            },
+                                            legend: {
+                                                display: false,
+                                            },
+                                        },
+                                    });
+                                </script>
+</body>
+
+</html>
