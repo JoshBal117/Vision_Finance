@@ -22,87 +22,74 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
     <link href="css/index-style.css" rel="stylesheet" />
-    
+
 </head>
 
 <body>
 
-<!---------------------------------------LOGIN MODAL---------------------------------------------->
+    <!---------------------------------------LOGIN MODAL---------------------------------------------->
 
-    
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-head">
-            
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h5 class="modal-name" id="exampleModalCenterTitle">Login</h5>
 
-          </div>
-          
-          <div class="modal-body">
-            <label for="inputEmail">Email</label>
-      <input type="text" class="form-control" id="inputEmail" placeholder="Jsmith@gmail.com">
-          </div>
-          <div class="modal-body">
-            <label for="inputEmail">Password</label>
-      <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
-          </div>
-          
-        
-          <div class="modal-foot">
-            
-            <button type="button" class="btn-modal btn-primary">Login</button>
-            <button type="button" class="btn-modal btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hid den="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-name" id="exampleModalCenterTitle">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="Jsmith@gmail.com">
+                </div>
+                <div class="modal-body">
+                    <label for="inputEmail">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Must be 8 characters">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary login-button">Login</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-<!---------------------------------------CREATE ACCT MODAL------------------------------------------>
+    <!---------------------------------------CREATE ACCT MODAL------------------------------------------>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-head">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        
-        <h5 class= "modal-name">Create Account</h5>
-        
-      </div>
-      
-      <div class="modal-body">
-        <label for="inputEmail">Email</label>
-  <input type="text" class="form-control" id="inputEmail" placeholder="Jsmith@gmail.com">
-      </div>
-      <div class="modal-body">
-        <label for="inputEmail">Password</label>
-  <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
-      </div>
-      <div class="modal-body">
-        <label for="inputEmail">Re-type Password</label>
-  <input type="text" class="form-control" id="inputEmail" placeholder="Must be 8 characters">
-  
-      </div>
-      
-    
-      <div class="modal-foot">
-        <button class="btn-modal btn-primary"><a type="create" class= "btn" href="/planned">Create Account</a> </button>
-    
-        
-      </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <h5 class="modal-name">Create Account</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control" id="registerName" placeholder="Jane Smith">
+                </div>
+                <div class="modal-body">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="registerEmail" placeholder="Jsmith@gmail.com">
+                </div>
+                <div class="modal-body">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="registerPassword" placeholder="Must be 8 characters">
+                </div>
+                <div class="modal-body">
+                    <label for="inputPassword2">Re-type Password</label>
+                    <input type="password" class="form-control" id="registerPassword2" placeholder="Must be 8 characters">
+                </div>
+                <div class="modal-foot">
+                    <button type="button" class="btn btn-primary register-button">Create Account</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-    
 
-    
-      
-    
+
+
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 
@@ -123,7 +110,7 @@
           <span class="navbar-toggler-icon"></span>
         </button> -->
 
-       
+
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0 back">
@@ -138,7 +125,7 @@
               <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#myModal">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger"data-toggle="modal" data-target="#myModal2">Signup</a>
+                    <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#myModal2">Signup</a>
                 </li>
             </ul>
 
@@ -157,9 +144,9 @@
 
 
 
-                  <br>
-                  <br>
-                  
+                    <br>
+                    <br>
+
 
                     <h1 class="let-us text-uppercase font-weight-bold">
                         Let us help finance your vision
@@ -237,24 +224,25 @@
           <!-- <a href="https://www.facebook.com/currentrms" target="_blank"> -->
             <img src="https://raw.githubusercontent.com/rohitink/sociocons/master/Sociocons/facebook-sociocon.png" style="max-height: 45px;" alt="Facebook">
           </a>
-          <!-- <a href="https://twitter.com/currentrms" target="_blank"> -->
-            <img src="https://raw.githubusercontent.com/rohitink/sociocons/master/Sociocons/twitter-sociocon.png" style="max-height: 45px;" alt="Twitter">
-          </a>
-          <!-- <a href="https://www.youtube.com/channel/UCtr9hX3v4gp_rZ7RonxG7hA" target="_blank"> -->
-            <img src="https://raw.githubusercontent.com/rohitink/sociocons/master/Sociocons/youtube-sociocon.png" style="max-height: 45px;" alt="YouTube">
-          </a>
-        </div>
-      </div>
-      
-      
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Third party plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="/js/scripts.js"></script>
-  </body>
+                    <!-- <a href="https://twitter.com/currentrms" target="_blank"> -->
+                    <img src="https://raw.githubusercontent.com/rohitink/sociocons/master/Sociocons/twitter-sociocon.png" style="max-height: 45px;" alt="Twitter">
+                    </a>
+                    <!-- <a href="https://www.youtube.com/channel/UCtr9hX3v4gp_rZ7RonxG7hA" target="_blank"> -->
+                    <img src="https://raw.githubusercontent.com/rohitink/sociocons/master/Sociocons/youtube-sociocon.png" style="max-height: 45px;" alt="YouTube">
+                    </a>
+                </div>
+            </div>
+
+
+            </footer>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+            <!-- Third party plugin JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="/js/scripts.js"></script>
+</body>
+
 </html>

@@ -47,53 +47,38 @@ module.exports = function(app) {
     });
 
     // Get budget tracker details
-    app.get("/api/currentbudgettracker/:userid/:inputmonth/:inputyear", function(
-        req,
-        res
-    ) {
-        var userInput = req.params.userid;
+    app.get(
+        "/api/currentbudgetbycategory/:userid/:inputmonth/:inputyear",
+        function(req, res) {
+            var userInput = req.params.userid;
 
-        var thismonth = req.params.inputmonth;
-        if (!thismonth) {
-            thismonth = new Date().getMonth();
-        }
-        var thisyear = req.params.inputyear;
-        if (!thisyear) {
-            thisyear = new Date().getFullYear();
-        }
-        var query = connection.query(
-            "SELECT c.customer_id, c.category, sum(c.amount) as budgeted_amount, " +
-            "IFNULL ( (select sum(transaction_amount) " +
-            "FROM budgetapp.customer_transactions " +
-            "WHERE customer_id = c.customer_id " +
-            "and transaction_category = c.category " +
-            "and budgeted_month = c.budgeted_month " +
-            "and budgeted_year = c.budgeted_year) ,  0) as actual_amount " +
-            "from customer_budget_details c " +
-            "WHERE c.customer_id = ? and c.budgeted_month = ? and c.budgeted_year = ?  GROUP BY c.category", [userInput, thismonth, thisyear],
-            function(err, result) {
-                if (err) throw err;
-                res.json(result);
+            var thismonth = req.params.inputmonth;
+            if (!thismonth) {
+                thismonth = new Date().getMonth();
             }
-        );
-    });
-
-    //get monthly expense for the current year
-    app.get("/api/currentyearexpense/:userid", function(req, res) {
-        let userInput = req.params.userid;
-        let thismonth = new Date().getMonth();
-        var query = connection.query(
-            "SELECT * FROM customer_transactions WHERE customer_id = ? and budgeted_month = ? ORDER BY CATEGORY", [userInput, thismonth],
-            function(err, result) {
-                if (err) throw err;
-                res.json(result);
+            var thisyear = req.params.inputyear;
+            if (!thisyear) {
+                thisyear = new Date().getFullYear();
             }
-        );
-    });
+            var query = connection.query(
+                "SELECT c.customer_id, c.category, sum(c.amount) as budgeted_amount, " +
+                "IFNULL ( (select sum(transaction_amount) " +
+                "FROM budgetapp.customer_transactions " +
+                "WHERE customer_id = c.customer_id " +
+                "and transaction_category = c.category " +
+                "and budgeted_month = c.budgeted_month " +
+                "and budgeted_year = c.budgeted_year) ,  0) as actual_amount " +
+                "from customer_budget_details c " +
+                "WHERE c.customer_id = ? and c.budgeted_month = ? and c.budgeted_year = ?  GROUP BY c.category", [userInput, thismonth, thisyear],
+                function(err, result) {
+                    if (err) throw err;
+                    res.json(result);
+                }
+            );
+        }
+    );
 
     //get daily expenses for the month
-
-    //get monthly expense for the current year
     app.get("/api/monthlyexpenses/:userid/:month/:year", function(req, res) {
         let userInput = req.params.userid;
         let inputmonth = req.params.month;
@@ -231,12 +216,9 @@ module.exports = function(app) {
         );
     });
 
-    app.post("/api/createbudget/:userid/:month/:year", function(req, res) {
-        var budget = {
-            customer_name: req.body.customerName,
-            customer_email: req.body.customerEmail,
-            customer_password: hash,
-        };
+    app.post("/api/createbudget", function(req, res) {
+        console.log(req);
+        var budget = req.body.budget;
 
         connection.query(
             "INSERT INTO customers_budget_details SET ?",
