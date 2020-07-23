@@ -15,13 +15,20 @@
  */
 
 
-
 .let-us {
      color: blue;
  }
  .modal-name{
     text-align: center;
     font-size: xx-large;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+     
+ }
+ 
+ span {
+     margin-right: 10px;
      
  }
 
@@ -34,9 +41,7 @@
     margin: 50px;
 }
 
-.btn-primary{
-    text-align: center;
-}
+
 .name {
     font-size: 70px;
     color: black;
@@ -47,10 +52,7 @@
     margin-top: 100px;
 }
 
-a:hover {
-    color: #d6370c;
-    text-decoration: underline;
-}
+
 
 .table {
     width: 100%;
@@ -156,7 +158,7 @@ a:hover {
 .btn-primary:focus,
 .btn-primary.focus {
     color: #fff;
-    background-color: #f24516;
+    background-color: black;
     border-color: #ee3e0d;
     box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
 }
@@ -164,7 +166,7 @@ a:hover {
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
-    background-color: #f4623a;
+    background-color: black;
     border-color: #f4623a;
 }
 
@@ -637,6 +639,35 @@ footer {
     text-align: center;
     padding: 25px;
     font-size: xx-large;
-    background-color: coral;
+    background-color: gray;
     height: 100px;
 }
+
+/* .btn {
+    text-align: center;
+    background-color: black;
+} */
+path {
+    color:blue;
+}
+
+.btn-modal {
+    background-color: blue;
+    width: 170px;
+    border-radius: 10rem;
+}
+.modal-content {
+    border-color: blue;
+    border-width: .1in;
+    background-color: white;
+    
+}
+.btn-light {
+    background-color: black;
+}
+
+.btn-primary {
+    background-color: black;
+}
+
+  

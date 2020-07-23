@@ -35,12 +35,18 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/Input-htmls/create.html"));
     });
 
-    app.get("/income", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/income.html"));
+    app.get("/planned", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/Input-htmls/planned.html"));
+    });
+    app.get("/replanned", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/Input-htmls/replanned.html"));
     });
 
-    app.get("/expense", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/housing.html"));
+    app.get("/actuals", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/Input-htmls/actuals.html"));
+    });
+    app.get("/budget", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/budget.html"));
     });
 
     app.get("/dashboard", function(req, res) {
