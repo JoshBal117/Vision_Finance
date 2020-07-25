@@ -2,7 +2,6 @@ $(document).ready(function() {
     //retrieve any data if present
 
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
-    debugger;
     console.log(signedInCustomer);
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
@@ -27,7 +26,6 @@ $(document).ready(function() {
             $("#budgetpage-title").text(
                 `Hello ${signedInCustomerName} Your budget is already setup for ${thisMonth}/${thisYear}`
             );
-            debugger;
             for (let index = 0; index < data.length; index++) {
                 if (data[index].category === "Income") {
                     if (data[index].label === "Paycheck1") {

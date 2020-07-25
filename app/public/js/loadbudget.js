@@ -2,7 +2,6 @@ $(document).ready(function() {
     //retrieve any data if present
 
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
-    debugger;
     console.log(signedInCustomer);
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
