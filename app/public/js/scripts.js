@@ -3,113 +3,110 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
  */
-(function ($) {
-  "use strict"; // Start of use strict
+(function($) {
+    "use strict"; // Start of use strict
 
-  // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-    if (
-      location.pathname.replace(/^\//, "") ==
-        this.pathname.replace(/^\//, "") &&
-      location.hostname == this.hostname
-    ) {
-      var target = $(this.hash);
-      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-      if (target.length) {
-        $("html, body").animate(
-          {
-            scrollTop: target.offset().top - 72,
-          },
-          1000,
-          "easeInOutExpo"
-        );
-        return false;
-      }
-    }
-  });
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+        if (
+            location.pathname.replace(/^\//, "") ==
+            this.pathname.replace(/^\//, "") &&
+            location.hostname == this.hostname
+        ) {
+            var target = $(this.hash);
+            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+            if (target.length) {
+                $("html, body").animate({
+                        scrollTop: target.offset().top - 72,
+                    },
+                    1000,
+                    "easeInOutExpo"
+                );
+                return false;
+            }
+        }
+    });
 
-  // Closes responsive menu when a scroll trigger link is clicked
-  $(".js-scroll-trigger").click(function () {
-    $(".navbar-collapse").collapse("hide");
-  });
+    // Closes responsive menu when a scroll trigger link is clicked
+    $(".js-scroll-trigger").click(function() {
+        $(".navbar-collapse").collapse("hide");
+    });
 
-  // Activate scrollspy to add active class to navbar items on scroll
-  $("body").scrollspy({
-    target: "#mainNav",
-    offset: 75,
-  });
+    // Activate scrollspy to add active class to navbar items on scroll
+    $("body").scrollspy({
+        target: "#mainNav",
+        offset: 75,
+    });
 
-  // Collapse Navbar
-  var navbarCollapse = function () {
-    if ($("#mainNav").offset().top > 100) {
-      $("#mainNav").addClass("navbar-scrolled");
-    } else {
-      $("#mainNav").removeClass("navbar-scrolled");
-    }
-  };
-  // Collapse now if page is not at top
-  navbarCollapse();
-  // Collapse the navbar when page is scrolled
-  $(window).scroll(navbarCollapse);
+    // Collapse Navbar
+    var navbarCollapse = function() {
+        if ($("#mainNav").offset().top > 100) {
+            $("#mainNav").addClass("navbar-scrolled");
+        } else {
+            $("#mainNav").removeClass("navbar-scrolled");
+        }
+    };
+    // Collapse now if page is not at top
+    navbarCollapse();
+    // Collapse the navbar when page is scrolled
+    $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
 
-$(".register-button").on("click", function (event) {
-  event.preventDefault();
+$(".register-button").on("click", function(event) {
+    event.preventDefault();
 
-  // Here we grab the form elements
-  var newUser = {
-    customerName: $("#registerName").val().trim(),
-    customerEmail: $("#registerEmail").val().trim(),
-    customerPassword: $("#registerPassword").val().trim(),
-    customerPassword2: $("#registerPassword").val().trim(),
-  };
+    // Here we grab the form elements
+    var newUser = {
+        customerName: $("#registerName").val().trim(),
+        customerEmail: $("#registerEmail").val().trim(),
+        customerPassword: $("#registerPassword").val().trim(),
+        customerPassword2: $("#registerPassword").val().trim(),
+    };
 
-  //console.log(newUser);
+    //console.log(newUser);
 
-  // This line is the magic. It"s very similar to the standard ajax function we used.
-  // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-  // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-  // depending on if a tables is available or not.
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
 
-  $.post("/api/register", newUser, function (data) {
-    console.log(data.user[0]);
-    debugger;
-    // Clear absolutely everything stored in localStorage using localStorage.clear()
-    localStorage.clear();
+    $.post("/api/register", newUser, function(data) {
+        console.log(data.user[0]);
+        // Clear absolutely everything stored in localStorage using localStorage.clear()
+        localStorage.clear();
 
-    // Store the user object  into localStorage
-    localStorage.setItem("signedInUser", JSON.stringify(data.user[0]));
+        // Store the user object  into localStorage
+        localStorage.setItem("signedInUser", JSON.stringify(data.user[0]));
 
-    window.location.replace("/planned");
-  });
+        window.location.replace("/planned");
+    });
 });
 
-$(".login-button").on("click", function (event) {
-  event.preventDefault();
+$(".login-button").on("click", function(event) {
+    event.preventDefault();
 
-  // Here we grab the form elements
-  var loginUser = {
-    customerEmail: $("#loginEmail").val().trim(),
-    customerPassword: $("#loginPassword").val().trim(),
-  };
+    // Here we grab the form elements
+    var loginUser = {
+        customerEmail: $("#loginEmail").val().trim(),
+        customerPassword: $("#loginPassword").val().trim(),
+    };
 
-  console.log(loginUser);
+    console.log(loginUser);
 
-  // This line is the magic. It"s very similar to the standard ajax function we used.
-  // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-  // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-  // depending on if a tables is available or not.
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
 
-  $.post("/api/login", loginUser, function (data) {
-    console.log(data.user[0]);
-    debugger;
+    $.post("/api/login", loginUser, function(data) {
+        console.log(data.user[0]);
 
-    // Clear absolutely everything stored in localStorage using localStorage.clear()
-    localStorage.clear();
+        // Clear absolutely everything stored in localStorage using localStorage.clear()
+        localStorage.clear();
 
-    // Store the user object  into localStorage
-    localStorage.setItem("signedInUser", JSON.stringify(data.user[0]));
+        // Store the user object  into localStorage
+        localStorage.setItem("signedInUser", JSON.stringify(data.user[0]));
 
-    window.location.replace("/planned");
-  });
+        window.location.replace("/planned");
+    });
 });

@@ -18,7 +18,6 @@ module.exports = function(app) {
         "/api/currentbudgetandactuals/:userid/:inputmonth/:inputyear",
         function(req, res) {
             var userInput = req.params.userid;
-            debugger;
             console.log("Inside currentbudget and actuals");
             var thismonth = req.params.inputmonth;
             if (!thismonth) {
@@ -198,7 +197,6 @@ module.exports = function(app) {
                                     return;
                                 }
                                 console.log(compare_res); //true or false
-                                debugger;
                                 if (compare_res) {
                                     //res.redirect(307, "/planned");
                                     res.send({

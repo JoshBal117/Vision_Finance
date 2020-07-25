@@ -14,6 +14,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+ :root {
+    --mainGreen: #317b22;
+    --mainRed: #b80c09;
+    --mainBlue: #05668d;
+}
+
 a {
     color: #f4623a;
     text-decoration: none;
@@ -463,12 +469,80 @@ header.masthead h1 {
     header.masthead h1 {
         font-size: 3rem;
     }
+    .budget-icon,
+    .expense-icon,
+    .balance-icon {
+        font-size: 3.5rem;
+        color: var(--mainBlue);
+    }
+    .budget {
+        font-size: 2.6rem;
+        color: var(--mainGreen);
+    }
+    .expense {
+        font-size: 2.6rem;
+        color: var(--mainRed);
+    }
+    .balance {
+        font-size: 2.6rem;
+    }
 }
 
 @media (min-width: 1200px) {
     header.masthead h1 {
         font-size: 3.5rem;
     }
+    .budget-icon,
+    .expense-icon,
+    .balance-icon {
+        font-size: 3.5rem;
+        color: var(--mainBlue);
+    }
+    .budget {
+        font-size: 2.6rem;
+        color: var(--mainGreen);
+    }
+    .expense {
+        font-size: 2.6rem;
+        color: var(--mainRed);
+    }
+    .balance {
+        font-size: 2.6rem;
+    }
+}
+
+.info-title {
+    font-size: 1.5rem;
+}
+
+.budget {
+    font-size: 1.6rem;
+    color: var(--mainGreen);
+}
+
+.expense {
+    font-size: 1.6rem;
+    color: var(--mainRed);
+}
+
+.balance {
+    font-size: 1.6rem;
+}
+
+.showRed {
+    color: var(--mainRed);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.showBlack {
+    color: black;
+}
+
+.showBlue {
+    font;
 }
 
 .text-white-75 {
@@ -588,6 +662,11 @@ body {
     background-color: #999;
 }
 
+div.budget-totals-card {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 div.budget-card {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -595,6 +674,10 @@ div.budget-card {
 
 main.mainclass {
     background-color: #4ca8de21;
+}
+
+.budget-totals-card-title {
+    background-color: #d3853b;
 }
 
 .budget-card-title {

@@ -8,7 +8,6 @@ $(document).ready(function() {
     //retrieve any data if present
 
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
-    debugger;
     console.log(signedInCustomer);
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
@@ -176,7 +175,6 @@ $(".submit-expenses").on("click", function(event) {
     console.log(expenses);
 
     // ajax call
-    debugger;
     $.post(
         "/api/createactuals",
         expenses,
