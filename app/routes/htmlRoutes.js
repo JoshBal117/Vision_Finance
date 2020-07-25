@@ -31,19 +31,12 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
-    app.get("/create", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/create.html"));
-    });
-
     app.get("/planned", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/planned.html"));
-    });
-    app.get("/replanned", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/replanned.html"));
+        res.sendFile(path.join(__dirname, "../public/planned.html"));
     });
 
     app.get("/actuals", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/Input-htmls/actuals.html"));
+        res.sendFile(path.join(__dirname, "../public/actuals.html"));
     });
     app.get("/budget", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/budget.html"));

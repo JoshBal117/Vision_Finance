@@ -69,7 +69,8 @@ function displayMonthHeader() {
 function getExpenseBreakdown() {
     //const selectedUser = $("#userId");
     //for now it is fixed
-    const selectedUser = "1";
+    const customer = JSON.parse(localStorage.getItem("signedInUser"));
+    const selectedUser = customer.id;
     const thismonth = new Date().getMonth();
     const thisyear = new Date().getFullYear();
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
@@ -119,7 +120,8 @@ function getExpenseBreakdown() {
 function getMoneyTracker() {
     //const selectedUser = $("#userId");
     //for now it is fixed
-    const selectedUser = "1";
+    const customer = JSON.parse(localStorage.getItem("signedInUser"));
+    const selectedUser = customer.id;
     const thismonth = new Date().getMonth();
     const thisyear = new Date().getFullYear();
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
@@ -188,7 +190,8 @@ function getMoneyTracker() {
 } //getMoneyTracker
 
 function getBudgetedChart() {
-    const selectedUser = "1";
+    const customer = JSON.parse(localStorage.getItem("signedInUser"));
+    const selectedUser = customer.id;
     const thismonth = new Date().getMonth();
     const thisyear = new Date().getFullYear();
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
