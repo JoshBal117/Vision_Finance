@@ -118,7 +118,7 @@ function getBudget() {
                             '-card-text">'
                         );
                         categoryCardText.append(
-                            '<div class="row"><div class="col-4"> <h5>Item</h5></div><div class="col-4"><h5>Budgeted</h5></div><div class="col-4"><h5>Actuals</h5></div></div></p>'
+                            '<div class="row underline"><div class="col-4"> <h5>Item</h5></div><div class="col-4"><h5>Budgeted</h5></div><div class="col-4"><h5>Actuals</h5></div></div></p>'
                         );
                         var itemsArray = categoryArray[i].items;
                         if (itemsArray.length > 0) {
@@ -149,7 +149,7 @@ function getBudget() {
                             '-card-text">'
                         );
                         categoryTotalsCardText.append(
-                            '<div class="row"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
+                            '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
                         );
                         categoryTotalsCardBody.append(categoryTotalsCardText);
                         //add body to card
@@ -161,7 +161,7 @@ function getBudget() {
                         var categoryCardText = $("#card-text-income");
 
                         categoryCardText.append(
-                            '<div class="row"><div class="col-4"> <h5>Item</h5></div><div class="col-4"><h5>Budgeted</h5></div><div class="col-4"><h5>Actuals</h5></div></div><p>'
+                            '<div class="row underline"><div class="col-4"> <h5>Item</h5></div><div class="col-4"><h5>Budgeted</h5></div><div class="col-4"><h5>Actuals</h5></div></div><p>'
                         );
                         var itemsArray = categoryArray[i].items;
 
@@ -187,7 +187,7 @@ function getBudget() {
                                 '-card-text">'
                             );
                             categoryTotalsCardText.append(
-                                '<div class="row"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
+                                '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
                             );
                             categoryTotalsCardBody.append(categoryTotalsCardText);
                             //add body to card

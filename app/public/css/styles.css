@@ -533,12 +533,16 @@ header.masthead h1 {
     color: var(--mainRed);
 }
 
-.showGreen {
-    color: var(--mainGreen);
+.underline {
+    text-decoration: underline;
 }
 
 .showBlack {
     color: black;
+}
+
+.showBlue {
+    font;
 }
 
 .text-white-75 {
