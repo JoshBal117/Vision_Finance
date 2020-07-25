@@ -7,9 +7,11 @@ $(document).ready(function() {
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
     const thisMonth = new Date().getMonth();
+    const monthName = new Date().toLocaleString("default", { month: "long" });
+
     const thisYear = new Date().getFullYear();
     $("#budgetpage-title").text(
-        `Hello ${signedInCustomerName} Lets set up your budget for ${thisMonth}/${thisYear}`
+        `Hello ${signedInCustomerName} Lets set up your budget for ${monthName}/${thisYear}`
     );
 
     $.get(
@@ -23,7 +25,7 @@ $(document).ready(function() {
         if (data.length > 0) {
             console.log(data);
             $("#budgetpage-title").text(
-                `Hello ${signedInCustomerName} Your budget is already setup for ${thisMonth} ${thisYear}`
+                `Hello ${signedInCustomerName} Your budget is already setup for ${thisMonth}/${thisYear}`
             );
             debugger;
             for (let index = 0; index < data.length; index++) {
@@ -91,8 +93,8 @@ $(".submit-budget").on("click", function(event) {
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
     const signedInCustomerId = signedInCustomer.id;
 
-    const thismonth = new Date().getMonth();
-    const thisyear = new Date().getFullYear();
+    const thisMonth = new Date().getMonth();
+    const thisYear = new Date().getFullYear();
 
     // Here we grab the form elements
     var budget = {
@@ -102,112 +104,112 @@ $(".submit-budget").on("click", function(event) {
                 "Income",
                 "Paycheck1",
                 parseInt($(".income-check1").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Income",
                 "Paycheck2",
                 parseInt($(".income-check2").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Income",
                 "Paycheck3",
                 parseInt($(".income-check3").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Income",
                 "Paycheck4",
                 parseInt($(".income-check4").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "House",
                 "Mortgage/Rent",
                 parseInt($(".house-mortgage").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "House",
                 "Electricity",
                 parseInt($(".house-electricity").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "House",
                 "Water",
                 parseInt($(".house-water").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Miscellaneous",
                 "Cable",
                 parseInt($(".misc-cable").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Miscellaneous",
                 "Subscriptions",
                 parseInt($(".misc-subscriptions").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Miscellaneous",
                 "Phone",
                 parseInt($(".misc-phone").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Food",
                 "Groceries",
                 parseInt($(".food-groceries").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Food",
                 "Restaurant",
                 parseInt($(".food-restuarants").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Transportation",
                 "CarPayment",
                 parseInt($(".transportation-carpayment").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
             [
                 signedInCustomerId,
                 "Transportation",
                 "Gas",
                 parseInt($(".transportation-gas").val().trim()),
-                thismonth,
-                thisyear,
+                thisMonth,
+                thisYear,
             ],
         ],
     };
@@ -219,11 +221,11 @@ $(".submit-budget").on("click", function(event) {
     $.post(
         "/api/createbudget",
         budget,
-        function(data) {
-            // If a table is available... tell user they are booked.
-            console.log(data);
-            if (data.code == "200") {
+        function(postResponse) {
+            if (postResponse.code == "200") {
                 window.location.replace("/budget");
+            } else {
+                //alert messages
             }
         }
         // ,

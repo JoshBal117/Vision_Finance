@@ -15,7 +15,8 @@ var masterColorChart = [
 function getMonthlyExpense() {
     //const selectedUser = $("#userId");
     //for now it is fixed
-    const selectedUser = "1";
+    const customer = JSON.parse(localStorage.getItem("signedInUser"));
+    const selectedUser = customer.id;
     const thismonth = new Date().getMonth();
     const thisyear = new Date().getFullYear();
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
