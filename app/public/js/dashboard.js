@@ -84,7 +84,12 @@ function getExpenseBreakdown() {
         function(monthlyExpenseData) {
             var monthlyExpenseLabels = [];
             var monthlyExpenseAmt = [];
-            var colorchart = [];
+            var colorchart = [
+                "rgba(213, 0, 0, 0.8)",
+                "rgba(0, 200, 83, 0.9)",
+                "rgba(81, 45, 168, 0.9)",
+                "rgba(255, 111, 0, 0.8)",
+            ];
             for (let index = 0; index < monthlyExpenseData.length; index++) {
                 monthlyExpenseAmt.push(monthlyExpenseData[index].t_amt);
                 monthlyExpenseLabels.push(
@@ -92,9 +97,9 @@ function getExpenseBreakdown() {
                 );
             }
 
-            if (monthlyExpenseData.length <= masterColorChart.length) {
-                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
-            }
+            // if (monthlyExpenseData.length <= masterColorChart.length) {
+            //     colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            // }
 
             var spendingTotalsChartCtx = document.getElementById(
                 "mySpendingTotalsChart"
@@ -136,7 +141,12 @@ function getMoneyTracker() {
             var monthlyExpenseLabels = [];
             var monthlyBudgetAmt = [];
             var monthlyAcutalAmt = [];
-            var colorchart = [];
+            var colorchart = [
+                "rgba(213, 0, 0, 0.8)",
+                "rgba(0, 200, 83, 0.9)",
+                "rgba(81, 45, 168, 0.9)",
+                "rgba(255, 111, 0, 0.8)",
+            ];
             for (let index = 0; index < monthlyExpenseData.length; index++) {
                 if (monthlyExpenseData[index].category === "Income") {
                     //should we do a diff graph for income
@@ -147,9 +157,9 @@ function getMoneyTracker() {
                     monthlyExpenseLabels.push(monthlyExpenseData[index].category);
                 }
             }
-            if (monthlyExpenseData.length <= masterColorChart.length) {
-                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
-            }
+            // if (monthlyExpenseData.length <= masterColorChart.length) {
+            //     colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            // }
 
             var budgetRadarChartCtx = document.getElementById("budgetRadarChart");
 
@@ -206,7 +216,12 @@ function getBudgetedChart() {
         function(monthlyExpenseData) {
             var monthlyExpenseLabels = [];
             var monthlyBudgetAmt = [];
-            var colorchart = [];
+            var colorchart = [
+                "rgba(213, 0, 0, 0.8)",
+                "rgba(0, 200, 83, 0.9)",
+                "rgba(81, 45, 168, 0.9)",
+                "rgba(255, 111, 0, 0.8)",
+            ];
             for (let index = 0; index < monthlyExpenseData.length; index++) {
                 if (monthlyExpenseData[index].category === "Income") {
                     //should we do a diff graph for income
@@ -216,9 +231,9 @@ function getBudgetedChart() {
                     monthlyExpenseLabels.push(monthlyExpenseData[index].category);
                 }
             }
-            if (monthlyExpenseData.length <= masterColorChart.length) {
-                colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
-            }
+            // if (monthlyExpenseData.length <= masterColorChart.length) {
+            //     colorchart = masterColorChart.splice(0, monthlyExpenseData.length);
+            // }
             var pieChartCtx = document.getElementById("budgetPieChart");
             var pieData = {
                 labels: monthlyExpenseLabels,

@@ -47,20 +47,24 @@ function getBudget() {
                         //first row
                         categoryBucket.push(budgetData[i]);
                         prevCat = budgetData[i].category;
-                        categoryBudgetTotal = categoryBudgetTotal + parseInt(budgetData[i].amount);
-                        categoryActualTotal = categoryActualTotal + parseInt(budgetData[i].actual_amount);
-                        budgetTotal = budgetTotal + parseInt(budgetData[i].amount);
-                        actualsTotal = actualsTotal + parseInt(budgetData[i].actual_amount)
+                        categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                        categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                        if (budgetData[i].category != "Income") {
+                            budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
+                            actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount)
+                        }
 
                     } else {
                         if (prevCat === budgetData[i].category) {
                             //2nd row onwards
 
                             categoryBucket.push(budgetData[i]);
-                            categoryBudgetTotal = categoryBudgetTotal + parseInt(budgetData[i].amount);
-                            categoryActualTotal = categoryActualTotal + parseInt(budgetData[i].actual_amount);
-                            budgetTotal = budgetTotal + parseInt(budgetData[i].amount);
-                            actualsTotal = actualsTotal + parseInt(budgetData[i].actual_amount)
+                            categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                            categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                            if (budgetData[i].category != "Income") {
+                                budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
+                                actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount);
+                            }
                         } else {
                             //now category has changed so push the prev category
                             categoryArray.push({
@@ -76,10 +80,12 @@ function getBudget() {
 
                             categoryBucket.push(budgetData[i]);
                             prevCat = budgetData[i].category;
-                            categoryBudgetTotal = categoryBudgetTotal + parseInt(budgetData[i].amount);
-                            categoryActualTotal = categoryActualTotal + parseInt(budgetData[i].actual_amount);
-                            budgetTotal = budgetTotal + parseInt(budgetData[i].amount);
-                            actualsTotal = actualsTotal + parseInt(budgetData[i].actual_amount)
+                            categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                            categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                            if (budgetData[i].category != "Income") {
+                                budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
+                                actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount)
+                            }
                         }
                     }
                 } //end for loop
@@ -202,6 +208,7 @@ function getBudget() {
                 //display budget tracker totals
                 var budgetTracker = $("#card-text-totals");
                 const diff = budgetTotal - actualsTotal;
+                // diff = diff.toFixed(2)
                 var colorClass = "";
                 if (diff === 0) {
                     colorClass = "showBlack"
