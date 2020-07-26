@@ -37,32 +37,37 @@ function getBudget() {
                 const categoryArray = [];
                 let categoryBucket = [];
                 let prevCat = "";
-                let categoryBudgetTotal = 0.00
-                let categoryActualTotal = 0.00
-                let budgetTotal = 0
-                let actualsTotal = 0
+                let categoryBudgetTotal = 0.0;
+                let categoryActualTotal = 0.0;
+                let budgetTotal = 0;
+                let actualsTotal = 0;
                 for (var i = 0; i < budgetData.length; i++) {
                     if (!prevCat) {
                         //first row
                         categoryBucket.push(budgetData[i]);
                         prevCat = budgetData[i].category;
-                        categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
-                        categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                        categoryBudgetTotal =
+                            categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                        categoryActualTotal =
+                            categoryActualTotal + parseFloat(budgetData[i].actual_amount);
                         if (budgetData[i].category != "Income") {
                             budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
-                            actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount)
+                            actualsTotal =
+                                actualsTotal + parseFloat(budgetData[i].actual_amount);
                         }
-
                     } else {
                         if (prevCat === budgetData[i].category) {
                             //2nd row onwards
 
                             categoryBucket.push(budgetData[i]);
-                            categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
-                            categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                            categoryBudgetTotal =
+                                categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                            categoryActualTotal =
+                                categoryActualTotal + parseFloat(budgetData[i].actual_amount);
                             if (budgetData[i].category != "Income") {
                                 budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
-                                actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount);
+                                actualsTotal =
+                                    actualsTotal + parseFloat(budgetData[i].actual_amount);
                             }
                         } else {
                             //now category has changed so push the prev category
@@ -74,16 +79,19 @@ function getBudget() {
                             });
                             //start of a new Category
                             categoryBucket = [];
-                            categoryBudgetTotal = 0.00;
-                            categoryActualTotal = 0.00;
+                            categoryBudgetTotal = 0.0;
+                            categoryActualTotal = 0.0;
 
                             categoryBucket.push(budgetData[i]);
                             prevCat = budgetData[i].category;
-                            categoryBudgetTotal = categoryBudgetTotal + parseFloat(budgetData[i].amount);
-                            categoryActualTotal = categoryActualTotal + parseFloat(budgetData[i].actual_amount);
+                            categoryBudgetTotal =
+                                categoryBudgetTotal + parseFloat(budgetData[i].amount);
+                            categoryActualTotal =
+                                categoryActualTotal + parseFloat(budgetData[i].actual_amount);
                             if (budgetData[i].category != "Income") {
                                 budgetTotal = budgetTotal + parseFloat(budgetData[i].amount);
-                                actualsTotal = actualsTotal + parseFloat(budgetData[i].actual_amount)
+                                actualsTotal =
+                                    actualsTotal + parseFloat(budgetData[i].actual_amount);
                             }
                         }
                     }
@@ -96,7 +104,6 @@ function getBudget() {
                         categoryBudgetTotal: categoryBudgetTotal,
                         categoryActualTotal: categoryActualTotal,
                     });
-
                 }
                 //end set category array
 
@@ -144,7 +151,6 @@ function getBudget() {
                         //add body to card
                         categoryCard.append(categoryCardBody);
 
-
                         //totals for each cat
                         var categoryTotalsCardBody = $('<div class="card-body text-dark">');
 
@@ -154,7 +160,11 @@ function getBudget() {
                             '-card-text">'
                         );
                         categoryTotalsCardText.append(
-                            '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
+                            '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' +
+                            categoryArray[i].categoryBudgetTotal +
+                            '</h5></div><div class="col-4"><h5>' +
+                            categoryArray[i].categoryActualTotal +
+                            "</h5></div></div>"
                         );
                         categoryTotalsCardBody.append(categoryTotalsCardText);
                         //add body to card
@@ -184,7 +194,9 @@ function getBudget() {
                                 );
                             }
                             //totals for each cat
-                            var categoryTotalsCardBody = $('<div class="card-body text-dark">');
+                            var categoryTotalsCardBody = $(
+                                '<div class="card-body text-dark">'
+                            );
 
                             var categoryTotalsCardText = $(
                                 ' <p class="card-text " id="' +
@@ -192,17 +204,19 @@ function getBudget() {
                                 '-card-text">'
                             );
                             categoryTotalsCardText.append(
-                                '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryBudgetTotal + '</h5></div><div class="col-4"><h5>' + categoryArray[i].categoryActualTotal + '</h5></div></div>'
+                                '<div class="row underline"><div class="col-4"> <h5>Totals</h5></div><div class="col-4"><h5>' +
+                                categoryArray[i].categoryBudgetTotal +
+                                '</h5></div><div class="col-4"><h5>' +
+                                categoryArray[i].categoryActualTotal +
+                                "</h5></div></div>"
                             );
                             categoryTotalsCardBody.append(categoryTotalsCardText);
                             //add body to card
-                            var categoryCard = $("#budget-income")
+                            var categoryCard = $("#budget-income");
                             categoryCard.append(categoryTotalsCardBody);
-
                         }
                     }
                 }
-
 
                 //display budget tracker totals
                 var budgetTracker = $("#card-text-totals");
@@ -210,41 +224,44 @@ function getBudget() {
                 // diff = diff.toFixed(2)
                 var colorClass = "";
                 if (diff === 0) {
-                    colorClass = "showBlack"
+                    colorClass = "showBlack";
                 } else if (diff > 0) {
-                    colorClass = "showGreen"
+                    colorClass = "showGreen";
                 } else {
-                    colorClass = "showRed"
+                    colorClass = "showRed";
                 }
-                var totalsdiv = '<div class="row my-3">' +
-                    '<h6 class="text-uppercase info-title">budget</h6>' +
-                    '<span class="budget-icon"><i class="fas fa-money-bill-alt"></i></span>' +
-                    '</div>' +
+                var totalsdiv =
+                    '<div class="row my-3">' +
+                    '<h6 class="text-uppercase info-title">budgeted expenses</h6>' +
+                    "</div>" +
                     '<div class="row my-3">' +
                     '<h4 class="text-uppercase mt-2 budget" id="budget"><span>$ </span>' +
                     '<span id="budget-amount">' +
                     budgetTotal +
-                    '</span></h4>' +
-                    '</div>' +
+                    "</span></h4>" +
+                    "</div>" +
                     '<div class="row my-3">' +
-                    '<h6 class="text-uppercase info-title">expenses</h6>' +
-                    '<span class="expense-icon"><i class="far fa-credit-card"></i></span>' +
-                    '</div>' +
+                    '<h6 class="text-uppercase info-title">acutal expenses</h6>' +
+                    "</div>" +
                     '<div class="row my-3">' +
                     '<h4 class="text-uppercase mt-2 expense" id="expense"><span>$ </span>' +
-                    '<span id="expense-amount">' + actualsTotal + '</span></h4>' +
-                    '</div>' +
+                    '<span id="expense-amount">' +
+                    actualsTotal +
+                    "</span></h4>" +
+                    "</div>" +
                     '<div class="row my-3">' +
-                    '<h6 class="text-uppercase info-title">balance</h6>' +
-                    '<span class="balance-icon"><i class="fas fa-dollar-sign"></i></span>' +
-                    '</div>' +
+                    '<h6 class="text-uppercase info-title">balance in budget</h6>' +
+                    "</div>" +
                     '<div class="row my-3">' +
-                    '<h4 class="text-uppercase mt-2 balance ' + colorClass +
+                    '<h4 class="text-uppercase mt-2 balance ' +
+                    colorClass +
                     '" id="balance"> <span>$ </span>' +
-                    '<span id="balance-amount">' + diff + '</span></h4>' +
-                    '</div>';
+                    '<span id="balance-amount">' +
+                    diff +
+                    "</span></h4>" +
+                    "</div>";
 
-                budgetTracker.append(totalsdiv)
+                budgetTracker.append(totalsdiv);
 
                 //budgetData is a sorted array on category
 

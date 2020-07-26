@@ -472,19 +472,19 @@ header.masthead h1 {
     .budget-icon,
     .expense-icon,
     .balance-icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: var(--mainBlue);
     }
     .budget {
-        font-size: 2.6rem;
+        margin-left: 15px font-size: 2.6rem;
         color: var(--mainGreen);
     }
     .expense {
-        font-size: 2.6rem;
+        margin-left: 15px font-size: 2.6rem;
         color: var(--mainRed);
     }
     .balance {
-        font-size: 2.6rem;
+        margin-left: 15px font-size: 2.6rem;
     }
 }
 
@@ -495,7 +495,7 @@ header.masthead h1 {
     .budget-icon,
     .expense-icon,
     .balance-icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: var(--mainBlue);
     }
     .budget {
@@ -512,7 +512,8 @@ header.masthead h1 {
 }
 
 .info-title {
-    font-size: 1.5rem;
+    margin-left: 15px;
+    font-size: 1.1rem;
 }
 
 .budget {

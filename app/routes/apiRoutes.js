@@ -172,10 +172,8 @@ module.exports = function(app) {
                     res.send({
                         code: 400,
                         failed: "error while looking up userocurred",
-                        message: error.sqlMessage
                     });
                 } else {
-
                     //check returned values
                     if (results.length > 0) {
                         bcrypt.compare(
@@ -231,7 +229,6 @@ module.exports = function(app) {
                     res.send({
                         code: 400,
                         failed: "error ocurred",
-                        message: sqlMessage,
                     });
                 } else {
                     res.send({
