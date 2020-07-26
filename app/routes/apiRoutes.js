@@ -18,7 +18,6 @@ module.exports = function(app) {
         "/api/currentbudgetandactuals/:userid/:inputmonth/:inputyear",
         function(req, res) {
             var userInput = req.params.userid;
-            console.log("Inside currentbudget and actuals");
             var thismonth = req.params.inputmonth;
             if (!thismonth) {
                 thismonth = new Date().getMonth();
@@ -41,7 +40,6 @@ module.exports = function(app) {
                 "c.cATEGORY", [userInput, thismonth, thisyear],
                 function(err, result) {
                     if (err) throw err;
-                    console.log(result);
                     res.json(result);
                 }
             );
@@ -118,17 +116,12 @@ module.exports = function(app) {
     // register
     app.post("/api/register", function(req, res) {
         const password = req.body.customerPassword;
-        console.log(`password ${password}`);
         bcrypt.hash(password, saltRounds, (err, hash) => {
             if (err) {
                 console.error(err);
                 return;
             }
-            console.log(`passwd hash ${hash}`);
 
-            const encryptedPassword = "test"; //await bcrypt.hash(password, saltRounds);
-            console.log("reqbody");
-            console.log(req.body);
             var users = {
                 customer_name: req.body.customerName,
                 customer_email: req.body.customerEmail,
@@ -151,7 +144,6 @@ module.exports = function(app) {
                         failed: "error ocurred",
                     });
                 } else {
-                    console.log("return results : " + JSON.stringify(results));
                     var userObj = [{
                         id: results.insertId,
                         customer_name: users.customer_name,
@@ -170,22 +162,20 @@ module.exports = function(app) {
 
     //login
     app.post("/api/login", async function(req, res) {
-        console.log("inside login");
         var email = req.body.customerEmail;
         var password = req.body.customerPassword;
-        console.log("inside login " + email + password);
 
         connection.query(
             "SELECT * FROM customers WHERE customer_email = ?", [email],
             function(error, results, fields) {
                 if (error) {
-                    console.log(error);
                     res.send({
                         code: 400,
                         failed: "error while looking up userocurred",
+                        message: error.sqlMessage
                     });
                 } else {
-                    console.log(JSON.stringify(results));
+
                     //check returned values
                     if (results.length > 0) {
                         bcrypt.compare(
@@ -193,10 +183,9 @@ module.exports = function(app) {
                             results[0].customer_password,
                             (compare_err, compare_res) => {
                                 if (compare_err) {
-                                    console.error(compare_err);
+                                    //console.error(compare_err);
                                     return;
                                 }
-                                console.log(compare_res); //true or false
                                 if (compare_res) {
                                     //res.redirect(307, "/planned");
                                     res.send({
@@ -228,14 +217,12 @@ module.exports = function(app) {
     });
 
     app.post("/api/createbudget", function(req, res) {
-        console.log(req.body);
         var budget = req.body.budgetdata;
 
         connection.query(
             "INSERT INTO customer_budget_details(customer_id,category,label,amount,budgeted_month,budgeted_year)VALUES ?", [budget],
             function(error, results, fields) {
                 if (error) {
-                    console.log(error);
                     // sample error for reference
                     // code: 'ER_DATA_TOO_LONG',
                     // errno: 1406,
@@ -244,6 +231,7 @@ module.exports = function(app) {
                     res.send({
                         code: 400,
                         failed: "error ocurred",
+                        message: sqlMessage,
                     });
                 } else {
                     res.send({
@@ -256,14 +244,12 @@ module.exports = function(app) {
     });
 
     app.post("/api/createactuals", function(req, res) {
-        console.log(req.body);
         var expenses = req.body.expensedata;
 
         connection.query(
             "INSERT INTO customer_transactions(customer_id,transaction_category,transaction_label,transaction_amount,budgeted_month,budgeted_year)VALUES ?", [expenses],
             function(error, results, fields) {
                 if (error) {
-                    console.log(error);
                     // sample error for reference
                     // code: 'ER_DATA_TOO_LONG',
                     // errno: 1406,

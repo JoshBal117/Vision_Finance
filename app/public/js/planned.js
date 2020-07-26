@@ -2,7 +2,6 @@ $(document).ready(function() {
     //retrieve any data if present
 
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
-    console.log(signedInCustomer);
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
     const thisMonth = new Date().getMonth();
@@ -22,7 +21,6 @@ $(document).ready(function() {
         thisYear
     ).then(function(data) {
         if (data.length > 0) {
-            console.log(data);
             $("#budgetpage-title").text(
                 `Hello ${signedInCustomerName} Your budget is already setup for ${thisMonth}/${thisYear}`
             );
@@ -81,7 +79,7 @@ $(document).ready(function() {
                 }
             }
         } else {
-            console.log("Set up data");
+            // console.log("Set up data");
         }
     });
 });
@@ -212,7 +210,6 @@ $(".submit-budget").on("click", function(event) {
         ],
     };
 
-    console.log(budget);
 
     // ajax call
 
