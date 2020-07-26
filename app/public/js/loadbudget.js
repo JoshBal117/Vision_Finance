@@ -2,7 +2,6 @@ $(document).ready(function() {
     //retrieve any data if present
 
     const signedInCustomer = JSON.parse(localStorage.getItem("signedInUser"));
-    console.log(signedInCustomer);
     const signedInCustomerId = signedInCustomer.id;
     const signedInCustomerName = signedInCustomer.customer_name;
     const thisMonth = new Date().getMonth() + 1;
