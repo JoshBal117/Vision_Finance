@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "root",
+        "username": "k88x3lcxusqh6x4q",
         "password": "root",
-        "database": "budgetapp",
-        "host": "127.0.0.1",
+        "database": "w95m8zdgwlzm0fxf",
+        "host": "z12itfj4c1vgopf8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "port": 3306,
         "dialect": "mysql"
     },

@@ -96,9 +96,9 @@ $(".login-button").on("click", function(event) {
     // depending on if a tables is available or not.
 
     $.post("/api/login", loginUser, function(data) {
-
         // Clear absolutely everything stored in localStorage using localStorage.clear()
         localStorage.clear();
+        console.log(data);
 
         // Store the user object  into localStorage
         localStorage.setItem("signedInUser", JSON.stringify(data.user[0]));
