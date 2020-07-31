@@ -29,7 +29,7 @@ module.exports = function(app) {
             var query = connection.query(
                 "SELECT c.customer_id, c.category, c.label, c.amount, " +
                 "IFNULL ( (select sum(transaction_amount) " +
-                "FROM budgetapp.customer_transactions " +
+                "FROM customer_transactions " +
                 "WHERE customer_id = c.customer_id " +
                 "and transaction_category = c.category " +
                 "AND transaction_label = c.label " +
@@ -63,7 +63,7 @@ module.exports = function(app) {
             var query = connection.query(
                 "SELECT c.customer_id, c.category, sum(c.amount) as budgeted_amount, " +
                 "IFNULL ( (select sum(transaction_amount) " +
-                "FROM budgetapp.customer_transactions " +
+                "FROM customer_transactions " +
                 "WHERE customer_id = c.customer_id " +
                 "and transaction_category = c.category " +
                 "and budgeted_month = c.budgeted_month " +
@@ -168,6 +168,8 @@ module.exports = function(app) {
         connection.query(
             "SELECT * FROM customers WHERE customer_email = ?", [email],
             function(error, results, fields) {
+                console.log(error);
+                console.log(results);
                 if (error) {
                     res.send({
                         code: 400,
